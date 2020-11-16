@@ -4,20 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Mapa da Casa</title>
-  </head>
-  <body style="text-align: center">
-    <canvas id="unity-canvas" style="width: 960px; height: 600px; background: #231F20"></canvas>
-    <script src="Build/mapadacasa.loader.js"></script>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
     <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/mapadacasa.data.unityweb",
-        frameworkUrl: "Build/mapadacasa.framework.js.unityweb",
-        codeUrl: "Build/mapadacasa.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Casa Vermelha",
-        productName: "Mapa da Casa",
-        productVersion: "0.1",
-      });
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {onProgress: UnityProgress});
     </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Mapa da Casa</div>
+      </div>
+    </div>
   </body>
 </html>
